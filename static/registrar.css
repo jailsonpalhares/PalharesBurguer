@@ -1,0 +1,88 @@
+/* Estilos para o container */
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center; /* Centralize todo o conteúdo */
+}
+
+/* Estilos para o título */
+h1 {
+    color: #333;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+/* Estilos para os rótulos dos campos de entrada */
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 18px;
+    text-align: left; /* Alinhe os rótulos à esquerda */
+}
+
+/* Estilos para os campos de entrada de texto */
+.form-field {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 2px solid #3498db;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box; /* Evite que o padding afete a largura total */
+}
+
+.form-field:focus {
+    border-color: #2980b9;
+}
+
+/* Estilos para o botão de registro */
+.register-button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.register-button:hover {
+    background-color: #2980b9;
+}
+
+/* Estilos para os links de login */
+.login-link {
+    color: #3498db;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.login-link:hover {
+    color: #2574a9;
+}
+
+/* Estilos para a mensagem de erro */
+.error-message {
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+/* Estilos para a lista de mensagens flash de erro */
+.flash-messages {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
