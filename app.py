@@ -326,8 +326,6 @@ def list_burguers():
     # Feche a conexão com o banco de dados
     conn.close()
 
-    # Renderize um template HTML para exibir os burguers
-    print("cupcakies: ", burguers)
     return render_template('adm_ListaBurguer.html', burguers=burguers)
 
 
