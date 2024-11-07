@@ -21,7 +21,7 @@
                         <p><strong>Descrição:</strong> {{ burguer[2] }}</p>
                         <p><strong>Preço:</strong> R$ {{ burguer[3] }}</p>
                         <p><strong>Disponível:</strong> {% if burguer[4] %}Sim{% else %}Não{% endif %}</p>
-                        <a href="/admin_edit_product/{{ burguer[0] }}" class="edit-link">Editar</a>
+                        <a href="/adm_EditBurguer/{{ burguer[0] }}" class="edit-link">Editar</a>
                     </div>
                 </li>
             {% endfor %}

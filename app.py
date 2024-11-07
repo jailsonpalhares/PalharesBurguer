@@ -145,7 +145,7 @@ def login():
             print("Valor do campo de administrador:", usuario[5])
 
             if usuario[5] == 1:
-                return redirect(url_for('admin_dashboard'))
+                return redirect(url_for('adm_Dashboard'))
             else:
                 return redirect(url_for('dashboard'))
         else:
@@ -179,15 +179,15 @@ def atualizar_burguer(burguer_id):
 
         # Redirecionar de volta para a página de listagem de burguers após a atualização
         session['mensagem'] = 'Hambúrguer atualizado com sucesso!'
-        return redirect('/admin_dashboard')
+        return redirect('/adm_Dashboard')
 
     except Exception as e:
         session['mensagem'] = f'Erro ao atualizar o burguer: {str(e)}'
-        return redirect('/admin_dashboard')
+        return redirect('/adm_Dashboard')
 
 
-@app.route('/admin_edit_product/<int:burguer_id>', methods=['GET'])
-def admin_edit_product(burguer_id):
+@app.route('/adm_EditBurguer/<int:burguer_id>', methods=['GET'])
+def adm_EditBurguer(burguer_id):
     print("Aí esta", burguer_id)
     # Estabeleça uma conexão com o banco de dados
     conn = sqlite3.connect('app.db')
@@ -202,8 +202,8 @@ def admin_edit_product(burguer_id):
 
     # Verifique se o burguer foi encontrado com o ID fornecido
     if burguer:
-        # Renderize a página de edição admin_edit_product.html, passando os detalhes do burguer
-        return render_template('admin_edit_product.html', burguer=burguer)
+        # Renderize a página de edição adm_EditBurguer.html, passando os detalhes do burguer
+        return render_template('adm_EditBurguer.html', burguer=burguer)
     else:
         # Se o burguer com o ID fornecido não for encontrado, redirecione para outra página ou manipule conforme necessário
         return "Hambúrguer não encontrado"
@@ -231,8 +231,8 @@ def dashboard():
     return redirect(url_for('login'))
 
 
-@app.route('/admin_dashboard')
-def admin_dashboard():
+@app.route('/adm_Dashboard')
+def adm_Dashboard():
     if 'usuario_id' in session:
         conn = connect_db()
         cursor = conn.cursor()
@@ -240,7 +240,7 @@ def admin_dashboard():
         usuario = cursor.fetchone()
 
         #fazer um drop table de cupcakes
-        #cursor.execute('''UPDATE usuarios SET is_admin = 1 WHERE id = 5;''')
+        cursor.execute('''DROP table cupcakes;''')
         
         conn.commit()
         conn.close()
@@ -249,7 +249,7 @@ def admin_dashboard():
             # Verificar se o usuário é um administrador
             if usuario[5] == 1:
                 print("La vamos nos")
-                return render_template('admin_dashboard.html')
+                return render_template('adm_Dashboard.html')
             else:
                 flash('Você não tem permissão para acessar a página de administração', 'error')
                 print("Entrei pombas")
@@ -311,7 +311,7 @@ def is_admin():
     return session.get('admin', False)
 
 
-@app.route('/admin_list_producto', methods=['GET'])
+@app.route('/adm_ListaBurguer', methods=['GET'])
 def list_burguers():
     # Estabeleça uma conexão com o banco de dados
     conn = sqlite3.connect('app.db')
@@ -328,7 +328,7 @@ def list_burguers():
 
     # Renderize um template HTML para exibir os burguers
     print("cupcakies: ", burguers)
-    return render_template('admin_list_product.html', burguers=burguers)
+    return render_template('adm_ListaBurguer.html', burguers=burguers)
 
 
 # Função para obter informações do burguer com base no ID no banco de dados
@@ -477,8 +477,8 @@ def home():
     return render_template('login.html')
 
 
-@app.route('/edit_profile', methods=['GET', 'POST'])
-def edit_profile():
+@app.route('/edit_Perfil', methods=['GET', 'POST'])
+def edit_Perfil():
     if 'usuario_id' in session:
         if request.method == 'POST':
             nome = request.form['nome']
@@ -509,14 +509,14 @@ def edit_profile():
         conn.close()
 
         if usuario:
-            return render_template('edit_profile.html', usuario=usuario)
+            return render_template('edit_Perfil.html', usuario=usuario)
 
     flash('Faça o login para acessar o perfil', 'error')
     return redirect(url_for('login'))
 
 
-@app.route('/admin/add_product', methods=['GET', 'POST'])
-def admin_add_product():
+@app.route('/admin/addBurguer', methods=['GET', 'POST'])
+def adm_AddBurguer():
     if request.method == 'POST':
         print("Entrei bosta")
         nome = request.form['nome']
@@ -541,9 +541,9 @@ def admin_add_product():
 
         flash('Produto adicionado com sucesso', 'success')
 
-        return redirect(url_for('admin_dashboard'))
+        return redirect(url_for('adm_Dashboard'))
 
-    return render_template('admin_add_product.html')
+    return render_template('adm_AddBurguer.html')
 
 
 @app.route('/finalizar_pedido', methods=['POST'])
