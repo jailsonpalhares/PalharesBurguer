@@ -240,7 +240,7 @@ def adm_Dashboard():
         usuario = cursor.fetchone()
 
         #fazer um drop table de cupcakes
-        cursor.execute('''DROP table cupcakes;''')
+        #cursor.execute('''DROP table cupcakes;''')
         
         conn.commit()
         conn.close()
