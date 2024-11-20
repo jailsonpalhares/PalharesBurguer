@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <!-- Seus estilos e metadados aqui -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='adm_ListaBurguer.css') }}">
+    <title>Lista de Hambúrgueres</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Hambúrgueres disponíveis para edição</h1>
+        <ul class="burguer-list">
+            {% for burguer in burguers %}
+                <li class="burguer-item">
+                    <div class="burguer-image-container">
+                        <img src="{{ burguer[5] }}" alt="Imagem do burguer" class="burguer-image">
+                    </div>
+                    <div class="burguer-details">
+                        <p><strong>Nome:</strong> {{ burguer[1] }}</p>
+                        <p><strong>Descrição:</strong> {{ burguer[2] }}</p>
+                        <p><strong>Preço:</strong> R$ {{ burguer[3] }}</p>
+                        <p><strong>Disponível:</strong> {% if burguer[4] %}Sim{% else %}Não{% endif %}</p>
+                        <a href="/adm_EditBurguer/{{ burguer[0] }}" class="edit-link">Editar</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

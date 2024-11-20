@@ -1,0 +1,227 @@
+body, ul, li, h1, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos do corpo */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Estilos do container principal */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos do título principal */
+h1 {
+    color: #ff6b00;
+    font-size: 28px;
+    text-align: center;
+    margin: 0 0 20px;
+}
+
+/* Estilos da lista de itens no carrinho */
+.carrinho-items {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Estilos de um item no carrinho */
+.carrinho-item {
+    display: flex;
+    align-items: center;
+    margin: 0 0 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    transition: box-shadow 0.3s;
+}
+
+/* Efeito de sombra ao passar o mouse em um item no carrinho */
+.carrinho-item:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos da imagem do hambugueres no carrinho */
+.carrinho-item-image img {
+    max-width: 100px;
+    height: auto;
+    margin-right: 10px;
+    border-radius: 8px;
+}
+
+/* Estilos do nome do hambugueres */
+.burguer-name {
+    font-size: 20px;
+    color: #333;
+}
+
+/* Estilos da descrição do hambugueres */
+.burguer-description {
+    font-size: 14px;
+    color: #777;
+}
+
+/* Estilos do preço e quantidade do hambugueres */
+.burguer-price,
+.burguer-quantity {
+    font-size: 16px;
+    color: #333;
+}
+
+/* Estilos do preço com destaque */
+.burguer-price {
+    font-weight: bold;
+    color: #ff6b00;
+    margin-top: 8px;
+}
+
+/* Limpeza de estilos padrão para p */
+p {
+    margin: 0;
+}
+
+/* Estilos para a mensagem de carrinho vazio */
+.empty-cart {
+    text-align: center;
+    color: #777;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+/* Estilos do botão de limpar o carrinho */
+.limpar-carrinho-button {
+    background-color: #ff5733;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+/* Efeito de hover no botão de limpar o carrinho */
+.limpar-carrinho-button:hover {
+    background-color: #e6482e;
+}
+
+/* Estilos do botão "Voltar" */
+.voltar-button {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    margin-right: 20px;
+}
+
+/* Estilos do container do botão de checkout */
+.checkout-button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+/* Estilos do botão de checkout */
+.checkout-button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Efeito de hover no botão de checkout */
+.checkout-button:hover {
+    background-color: #ff6600;
+    color: #fff;
+}
+
+/* Estilos para o resumo do pedido */
+.total-price {
+    margin-top: 20px;
+    font-size: 24px;
+    text-align: right;
+}
+
+/* Estilos para a mensagem de confirmação */
+.confirmation-message {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Estilos para o botão de remoção do carrinho */
+.remover-item-do-carrinho {
+    background-color: #ff5733;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+/* Efeito de hover no botão de remoção do carrinho */
+.remover-item-do-carrinho:hover {
+    background-color: #e6482e;
+}
+
+/* Definindo cores personalizadas para os ícones */
+.icon-user {
+    color: #3498db;
+}
+
+.icon-home {
+    color: #e74c3c;
+}
+
+/* Estilos para a sobreposição (overlay) */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    display: none;
+}
+
+/* Estilos para a caixa de diálogo de erro */
+.error-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 101;
+    display: none;
+}
+
+/* Estilos para o texto da mensagem de erro */
+.error-message {
+    font-size: 18px;
+    color: #ff0000;
+    text-align: center;
+}

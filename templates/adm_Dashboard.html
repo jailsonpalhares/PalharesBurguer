@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Administração</title>
+    <!-- Adicione links para seus arquivos CSS e Font Awesome aqui -->
+    <link rel="stylesheet" href="../static/adm_Dashboard.css">
+    <link rel="stylesheet" href="../static/mediaSmartphone.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="header-icons">
+        <!-- Ícones no cabeçalho -->
+    <div class="admin-dashboard">
+        <div class="admin-content">
+            <a href="/logout" class="logout-button" title="Sair">
+                <i class="fa fa-sign-out-alt"></i> Sair
+            </a>
+            <a href="/edit_Perfil" class="icon-link edit-profile-link" title="Editar perfil">
+                <i class="fas fa-user icon-user"></i>  Editar Perfil
+            </a>
+            <!-- Conteúdo do painel de administração -->
+            <h3>Bem-vindo ao Painel de Administração!</h3>
+            <p>Aqui você pode gerenciar produtos.</p>
+        </div>
+        <div class="admin-menu">
+            <h2>GERENCIAR HAMBÚRGUERES</h2>
+            <ul>
+                <li>
+                  <a href="/admin/addBurguer">
+                    <img src="./static/imagens/logo_Add_Burguer.png" height="200">
+                    Adicionar novo Hambúrguer
+                  </a>
+                </li>
+                <li>
+                  <a href="/adm_ListaBurguer">
+                    <img src="./static/imagens/logo_Edit_Burguer.png" height="200">
+                    Editar Hambúrguer
+                  </a>
+                </li>
+              </ul>
+        </div>
+    </div>
+    {% if 'mensagem' in session %}
+        <div class="mensagem {% if session['mensagem'] == 'Hambúrguer atualizado com sucesso!' %} mensagem-sucesso {% else %} mensagem-erro {% endif %}">
+            {{ session['mensagem'] }}
+        </div>
+        {% set _ = session.pop('mensagem', None) %}
+    {% endif %}
+</body>
+<script>
+    // Seleciona a mensagem e a esconde após um intervalo de tempo
+    var mensagemElement = document.querySelector('.mensagem');
+    if (mensagemElement) {
+        setTimeout(function() {
+            mensagemElement.style.display = 'none';
+        }, 3000); // Esconde após 3 segundos (3000 milissegundos)
+    }
+</script>
+</html>

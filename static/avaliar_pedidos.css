@@ -1,0 +1,508 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.voltar-button{
+    position: relative;
+    top: 0px;
+    display: inline-block;
+    padding: 12px 24px;
+    margin: 20 40px;
+    background-color: #ff8900;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+.container {
+    margin: 20px;
+    padding: 20px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+h1 {
+    position: relative;
+    top: 10px;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    margin: 0;
+}
+
+table {
+    margin-top: 20px;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo das linhas de pedido ao passar o mouse */
+tr.linha-pedido:hover {
+    background-color: #f2f2f2;
+    cursor: pointer;
+}
+
+/* Estilo das células da tabela */
+th, td {
+    border: 1px solid #ccc;
+    padding: 12px;
+    text-align: left;
+    border-radius: 4px;
+}
+
+/* Adicione uma sombra suave às células da tabela */
+th, td {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo das células de cabeçalho */
+th {
+    background-color: #333;
+    color: #fff;
+    padding: 12px;
+    text-align: left;
+}
+
+/* Estilo para a seção de detalhes do item de pedido */
+.item-pedido-detalhes {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+/* Estilo das linhas de pedido ao passar o mouse */
+.linha-pedido:hover {
+    background-color: #f2f2f2;
+    cursor: pointer;
+}
+
+/* Estilo dos itens de pedido */
+.itens-pedido {
+    display: none;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+/* Estilo para imagens de hambugueres */
+.burguer-img {
+    max-width: 100px;
+    max-height: 100px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Estilo para a seção de detalhes do item de pedido */
+.item-pedido-detalhes {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 10px;
+}
+/* Estilo para ocultar os itens do pedido por padrão */
+.itens-pedido {
+    display: none;
+}
+ .pedido-container {
+     border: 1px solid #ccc;
+     margin: 10px;
+     padding: 10px;
+     background-color: #f9f9f9;
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+     text-align: center;
+ }
+
+/* Estilo para a tela modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Estilo do conteúdo da tela modal */
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Outros estilos existentes ... */
+
+
+.close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #888;
+}
+
+.burguer-modal-img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+.modal-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.modal-details {
+    margin-top: 20px;
+}
+
+/* Estilo do botão de fechar (x) */
+.close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #888;
+}
+
+/* Estilos do botão "Voltar" */
+.voltar-button {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    margin-right: 20px;
+}
+/* Estilo para imagens de hambugueres */
+.burguer-img {
+    max-width: 100px;
+    max-height: 100px;
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+/* Estilos para a classificação por estrelas */
+.rating {
+  display: inline-block;
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+
+.rating input {
+  display: none;
+}
+
+.rating label {
+  display: inline-block;
+  padding: 5px;
+  font-size: 24px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.rating label:before {
+  content: "\2605";
+}
+
+.rating input:checked ~ label {
+  color: #FFD700;
+}
+
+/* Estilo base para a estrela */
+.star {
+    width: 30px;
+    height: 30px;
+    background-image: url('https://casaeconstrucao.org/wp-content/uploads/2019/08/molde-de-estrela-9.png');
+    background-size: cover;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Estilo para a estrela quando está ativa */
+.star.active {
+    background-image: url('https://th.bing.com/th/id/OIP._MlGs1SfLXP1zvaSYJMWCgHaH3?pid=ImgDet&rs=1');
+}
+
+/* Estilo para o formulário */
+form {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para o rótulo */
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Estilo para o campo de texto (textarea) */
+textarea {
+    width: 100%;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    max-height: 100px;
+    resize: none;
+    text-align: center;
+    padding: 40px 0;
+}
+
+/* Estilo para o botão de envio */
+input[type="submit"] {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Estilo para o botão de envio ao passar o mouse */
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+/* Estilo para o container que envolve o formulário */
+.container_comm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+
+/* Estilos para pedidos não avaliados */
+.nao-avaliado {
+    border: 2px solid red;
+    background-color: #ffe6e6;
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #ff0000;
+}
+
+/* Estilos para pedidos avaliados */
+.avaliado {
+    border: 2px solid green;
+    background-color: #e6ffec;
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #008000;
+
+/* Estilo para a tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #3cda98;
+}
+
+/* Estilo para a imagem do hambugueres */
+img {
+    max-width: 100px;
+    height: auto;
+}
+
+/* Estilo para os detalhes do pedido */
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+h3 {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.clickable {
+    cursor: pointer;
+    transition: border 0.3s ease-in-out;
+}
+
+/* Adicione esse estilo para destacar a borda quando o mouse passar sobre a imagem */
+.clickable:hover {
+    border: 2px solid #007bff;
+}
+
+/* Estilos para a tabela de detalhes do pedido */
+table.detalhes-pedido {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table.detalhes-pedido th,
+table.detalhes-pedido td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+/* Adicione estilos específicos para telas menores (por exemplo, telas com largura máxima de 600px) */
+@media (max-width: 600px) {
+    table.detalhes-pedido th,
+    table.detalhes-pedido td {
+        padding: 5px;
+    }
+
+    /* Ajuste a largura da tabela para caber na tela */
+    table.detalhes-pedido {
+        width: 100%;
+    }
+}
+
+    /* Estilo para o contêiner de detalhes do pedido */
+    .pedido-details {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 20px;
+        margin: 20px 0;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Estilo para o título "Detalhes do Pedido" */
+    .pedido-title {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    /* Estilo para as informações do pedido (ID, Cliente, Endereço) */
+    .pedido-info p {
+        font-size: 16px;
+        margin: 5px 0;
+    }
+
+     /* Estilo para a tabela de itens */
+    .itens-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        background-color: #f2f2f2;
+        border: 1px solid #ddd;
+    }
+
+    .itens-table th, .itens-table td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
+
+    .itens-table th {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    .itens-table tr:nth-child(even) {
+        background-color: #f5f5f5;
+    }
+
+    .itens-table tr:nth-child(odd) {
+        background-color: #ffffff;
+    }
+
+    .itens-table tr:hover {
+        background-color: #e0e0e0;
+    }
+    /* Estilo para a imagem do hambugueres */
+    .burguer-image img {
+        max-width: 100px;
+        max-height: 100px;
+        border-radius: 5px;
+    }
+
+    .no-pedidos-message {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+    }
+
+    .no-pedidos-message p {
+        font-size: 32px;
+        font-weight: bold;
+        color: #000000;
+        background-color: rgba(0, 0, 0, 0);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+/* Estilos CSS */
+.pedir-burguer-link {
+    display: inline-block;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #000000;
+    background-color: rgba(0, 0, 0, 0);
+    padding: 15px 25px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.pedir-burguer-link:hover {
+    background-color: rgb(0, 255, 0);
+    transform: scale(1.05);
+}
+
+/* Estilo para quando o link é clicado */
+.pedir-burguer-link:active {
+    background-color: rgba(0, 0, 0, 0);
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <!-- Seus estilos e metadados aqui -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='adm_EditBuguer.css') }}">
+    <title>Editar Hambúrguer</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Editar Hambúrguer</h1>
+        <form action="/atualizar_burguer/{{ burguer[0] }}" method="POST">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" value="{{ burguer[1] }}"><br><br>
+
+            <label for="descricao">Descrição:</label>
+            <textarea id="descricao" name="descricao">{{ burguer[2] }}</textarea><br><br>
+
+            <label for="preco">Preço:</label>
+            <input type="text" id="preco" name="preco" value="{{ burguer[3] }}"><br><br>
+
+            <label for="disponivel">Disponível:</label>
+            <input type="checkbox" id="disponivel" name="disponivel" {% if burguer[4] %}checked{% endif %}><br><br>
+
+            <input type="submit" value="Atualizar">
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,216 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    transition: background-image 4s ease-in-out, opacity 2s ease-in-out;
+}
+
+/* Estilos do contêiner principal */
+.container {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.897);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+/* Estilos do logotipo */
+.logo, img {
+    display: flex;
+    margin-top: 0px;
+    letter-spacing: 1px;
+    font-family: "Bebas Neue", sans-serif;
+    line-height: 0;
+    font-size: 65px;
+    font-weight: regular;
+    margin-bottom: 20px;
+    color: #ffffff;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: none;
+    padding: 0;
+    white-space: nowrap
+}
+
+.logo{
+    margin-top: -180px;
+}
+/* Estilos do título */
+
+.slogan {
+    font-weight: 400;
+    font-size: 17px;
+    font-family: 'Bebas Neue';
+    color: #ff8900;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    position: relative;
+    top: -150px;
+}
+
+h1 {
+    font-size: 28px;
+    font-family: Poppins,sans-serif;
+    color: #575962;
+}
+
+/* Estilos das etiquetas */
+
+label {
+    font-size: 18px;
+    font-weight: bold;
+    display: block;
+    margin-top: 15px;
+}
+
+/* Estilos dos campos de entrada */
+input[type="email"],
+input[type="password"] {
+    width: 90%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Estilos para o botão de login */
+.login-button {
+    background-color: #ff8c00;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.login-button:hover {
+    background-color: #d87300;
+}
+
+/* Estilos para o link de registro */
+.register-link {
+    text-decoration: none;
+    color: #ff8900;
+    font-weight: bold;
+}
+
+.register-link:hover {
+    text-decoration: underline;
+    color: #d87300;
+}
+
+/* Estilos das mensagens de erro */
+ul.flash-messages {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+ul.flash-messages li {
+    color: #e74c3c;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.animation-paused .background-fade {
+    animation-play-state: paused;
+}
+/* Estilos do fundo */
+.background-fade {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    animation: changeImage 8s linear infinite;
+    z-index: -1;
+}
+
+/* Animação das imagens de fundo */
+@keyframes changeImage {
+    0%, 100% { opacity: 1; background-image: url('imagens/burguer2.jpg'); }
+}
+
+
+.flash-error {
+    color: #ff0000;
+    font-weight: bold;
+    background-color: #ffeeee;
+    border: 1px solid #ff0000;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.flash-message {
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 5px 0;
+    padding: 12px;
+    font-size: 16px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+
+/* Estilo para a caixa de diálogo de mensagem */
+.message-dialog {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    z-index: 9999;
+    max-width: 80%;
+    text-align: center;
+    font-size: 16px;
+    overflow: hidden;
+}
+
+/* Estilo para a caixa de diálogo de sucesso */
+.message-dialog.success {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+/* Estilo para a caixa de diálogo de erro */
+.message-dialog.error {
+    background-color: #F44336;
+    color: #fff;
+}
+
+/* Estilo para o botão de fechar a caixa de diálogo */
+.message-dialog-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #333;
+}
+
+/* Estilo para o conteúdo da mensagem */
+.message-message {
+    margin-top: 20px;
+}

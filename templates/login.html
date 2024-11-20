@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <!-- import da fonte Bebas Neue-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!--Adição de icone navegador-->
+    <link rel="icon" href="./static/imagens/logo.png"
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Palhares Burguer</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='login.css') }}">
+    <link rel="stylesheet" href="../static/mediaSmartphone.css">
+    <!-- CSS do Bootstrap (link para o CDN) -->
+    <!-- JavaScript do Bootstrap (JQuery é necessário) e Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+    </style>
+    <script>
+       // Função para exibir a caixa de diálogo de mensagem
+        function showMessageDialog(messageType, message) {
+            var messageDialog = document.querySelector('.message-dialog');
+            var overlay = document.querySelector('.overlay');
+
+            // Definir a classe CSS com base no tipo de mensagem (success ou error)
+            messageDialog.className = 'message-dialog ' + messageType;
+
+            // Exibir a caixa de diálogo e a sobreposição
+            messageDialog.style.display = 'block';
+            overlay.style.display = 'block';
+
+            // Preencher a mensagem
+            var messageContent = messageDialog.querySelector('.message-message');
+            messageContent.textContent = message;
+        }
+
+        // Função para fechar a caixa de diálogo de mensagem
+        function closeMessageDialog() {
+            var messageDialog = document.querySelector('.message-dialog');
+            var overlay = document.querySelector('.overlay');
+
+            // Ocultar a caixa de diálogo e a sobreposição
+            messageDialog.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+
+        // Função para exibir mensagens de sucesso
+        function showSuccessMessage(message) {
+            showMessageDialog('success', message);
+            setTimeout(closeMessageDialog, 2000); // Fechar após 2 segundos
+        }
+
+        // Função para exibir mensagens de erro
+        function showErrorMessage(message) {
+            showMessageDialog('error', message);
+            setTimeout(closeMessageDialog, 2000); // Fechar após 2 segundos
+        }
+
+    // Verifique as mensagens flash na página carregada
+    window.onload = function() {
+        var successMessage = "{{ get_flashed_messages(category_filter='success')[0] }}";
+        var errorMessage = "{{ get_flashed_messages(category_filter='error')[0] }}";
+
+        if (successMessage) {
+            showSuccessMessage(successMessage);
+        } else if (errorMessage) {
+            showErrorMessage(errorMessage);
+        }
+    };
+
+    </script>
+</head>
+<img src="./static/imagens/logo.png" height="200">
+<body class="background-fade">
+    <div class="container">
+        
+        <header>
+            <div class="logo">PALHARES BURGUER</div>
+            <div class ="slogan" >Hambúrgueres e Combos Artesanais Monstruosos</div>
+            <h1>Acesse sua conta</h1>
+        </header>
+        <main>
+            <form method="POST" action="/login">
+                <!-- <label for="email">Email</label>-->
+                <input type="email" id="email" name="email" placeholder="Email" class="form-field" required value="{{ request.form.email }}">
+
+                <!-- <label for="senha">Password</label> -->
+                <input type="password" id="senha" name="senha"placeholder="Password" class="form-field" required>
+
+                <button type="submit" class="login-button">Acessar</button>
+            </form>
+            <p>Não tem uma conta? <a href="/register" class="register-link">Crie uma!</a></p>
+            <!--<p>Criar DB <a href="/create_db" class="register-link">Cria DB</a></p> -->
+        </main>
+         {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="overlay"></div>
+                <div class="message-dialog {{ messages[0][1] }}">  <!-- Usa a categoria da mensagem para definir a classe CSS -->
+                    <span class="message-dialog-close" onclick="closeMessageDialog()">&times;</span>
+                    <p class="message-message">{{ messages[0][0] }}</p>
+                </div>
+                <script>
+                    var messageType = "{{ messages[0][1] }}";
+                    showMessageDialog(messageType, "{{ messages[0][0] }}"); // Exibe a mensagem em uma caixa de diálogo
+                </script>
+            {% endif %}
+        {% endwith %}
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,165 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+.admin-dashboard {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos do cabeçalho */
+.admin-header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.admin-header h1 {
+    font-size: 28px;
+}
+
+.logout-button {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 20px;
+    font-size: 18px;
+}
+
+/* Estilos do menu de administração */
+.admin-menu {
+    background-color: #333;
+    color: #ff6b00;
+    padding: 60px;
+    border-radius: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+  }
+
+.admin-menu h2 {
+    margin-top: -40px;
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+.admin-menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.admin-menu ul li {
+    margin-bottom: 0px;
+    text-align: center;
+    padding-top: 35px;
+}
+
+.admin-menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+.admin-menu ul li a:hover {
+    color: #ff6b00; 
+}
+
+/* Estilos do conteúdo do painel de administração */
+.admin-content {
+    padding: 20px;
+}
+
+.admin-content h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.admin-content p {
+    font-size: 18px;
+    color: #777;
+}
+/* Estilo para a mensagem */
+.mensagem {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20%; 
+    text-align: center; 
+  }
+
+/* Estilo para a mensagem de sucesso */
+.mensagem-sucesso {
+    background-color: #4CAF50;
+}
+
+/* Estilo para a mensagem de erro */
+.mensagem-erro {
+    background-color: #f44336;
+}
+
+.logout-button {
+    position: absolute;
+    top: 80px;
+    right: 0px;
+    z-index: 1000; 
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.edit-profile-link {
+    position: absolute; 
+    top: 20px;
+    right: 20px; 
+    z-index: 1000;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+  }
+.logout-button:hover, .edit-profile-link:hover{
+    color: #ff6b00;
+}
+
+.logout-text {
+    margin-right: 5px;
+}
+
+.admin-menu ul img {
+    width: 100px; 
+    height: 50px; 
+    margin: 10px; 
+    border-radius: 0px; 
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0.2); 
+}
+
+.admin-menu ul li a img {
+    display: block;
+    margin: 0 auto;
+}

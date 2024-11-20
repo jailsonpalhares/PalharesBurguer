@@ -1,0 +1,204 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 10px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Estilos CSS para o conteúdo principal */
+.content {
+    margin-top: 60px;
+    padding: 20px;
+}
+
+.header h1 {
+    margin: 0;
+    padding-left: 20px;
+    font-size: 1.5rem;
+}
+
+.header-icons {
+    padding-right: 20px;
+}
+
+.header-icons a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+/* Estilos para a lista de burguers */
+.burguer-list {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.burguer-list h1 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+/* Estilos para cada item de hambugueres*/
+.burguer-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    list-style: none;
+    padding: 0;
+}
+
+.burguer-item {
+    width: calc(33.33% - 20px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    margin: 0 20px;
+    border-radius: 12px;
+}
+
+.burguer-item:hover {
+    transform: translateY(-5px);
+}
+
+/* Estilos para a imagem do hambugueres*/
+.burguer-image img {
+    max-width: 200px;
+    max-height: 200px;
+    width: auto;
+    height: auto;
+    border: 1px solid #ccc;
+    padding: 5px;
+    cursor: pointer;
+}
+/* Estilos para o nome do hambugueres*/
+.burguer-name {
+    font-size: 1.25rem;
+    margin: 10px 0;
+    color: #333;
+}
+
+/* Estilos para a descrição do hambugueres*/
+.burguer-description {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #666;
+}
+
+/* Estilos para o preço do hambugueres*/
+.burguer-price {
+    font-size: 1.125rem;
+    font-weight: bold;
+    color: #ff5733;
+}
+
+/* Estilos para o seletor de quantidade personalizado */
+.quantity-selector {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.quantity-selector button {
+    background-color: #ff8900;
+    color: #fff;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 5px 10px;
+    margin: 0 5px;
+    border-radius: 3px;
+}
+
+.quantity-selector input {
+    font-size: 1rem;
+    text-align: center;
+    width: 40px;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+/* Estilos para o botão "Adicionar ao carrinho" */
+.buy-button {
+    background-color: #555;
+    color: #fff;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 3px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.buy-button:hover {
+    background-color: #ff8900;
+}
+
+/* Estilos para o modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 2000;
+    text-align: center;
+    overflow: auto;
+}
+
+/* Estilos para a imagem dentro do modal */
+.modal-img {
+    max-width: 90%;
+    max-height: 90%;
+    margin: 20px auto;
+    display: block;
+}
+
+.fechar-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #fff;
+    z-index: 3000;
+}
+
+.burguer-item.unavailable {
+    opacity: 0.5;
+    cursor: not-allowed;
+    position: relative;
+}
+
+.burguer-item.unavailable:hover::before {
+    content: "burguer indisponível";
+    display: block;
+    position: absolute;
+    background: white;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    z-index: 1;
+    top: -30px;
+}
