@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Pedidos</title>
+    
+    <link rel="stylesheet" href="../static/adm_Orders.css">
+    <link rel="stylesheet" href="../static/mediaSmartphone.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: orange;
+            color: white;
+        }
+        .pedido-group {
+            background-color: #f9f9f9;
+            font-weight: bold;
+            border-top: 4px solid #333; /* Linha mais grossa para separar clientes */
+        }
+    </style>
+</head>
+<body>
+    <h1>Relatório de Pedidos</h1>
+    <a href="/adm_Dashboard" class="action-button">Voltar</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Telefone</th>
+                <th>Endereço</th>
+                <th>Hambúrguer</th>
+                <th>Quant.</th>
+                <th>Data</th>
+                <th>Status</th>
+                <th>Id</th>
+            </tr>
+        </thead>
+        <tbody id="relatorios-body">
+            {% for relatorio in relatorios %}
+                <tr>
+                    <td>{{ relatorio[0] }}</td>
+                    <td>{{ relatorio[1] }}</td>
+                    <td>{{ relatorio[2] }}</td>
+                    <td>{{ relatorio[3] }}</td>
+                    <td>{{ relatorio[4] }}</td>
+                    <td>{{ relatorio[5] }}</td>
+                    <td>{{ relatorio[6] }}</td>
+                    <td>{{ relatorio[7] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script>
+        // Captura os dados da tabela renderizada
+        const tableBody = document.getElementById("relatorios-body");
+        const rows = Array.from(tableBody.querySelectorAll("tr"));
+
+        // Processa os dados da tabela para agrupar por ID
+        const groupedData = rows.reduce((acc, row) => {
+            const columns = row.querySelectorAll("td");
+            const id = columns[7].innerText; // Obtém o ID (última coluna)
+
+            if (!acc[id]) {
+                // Se o ID ainda não existir no agrupamento, cria um novo registro
+                acc[id] = {
+                    cliente: columns[0].innerText,
+                    telefone: columns[1].innerText,
+                    endereco: columns[2].innerText,
+                    hamburgueres: [],
+                    data: columns[5].innerText,
+                    status: columns[6].innerText,
+                    id: id,
+                };
+            }
+
+            // Adiciona os detalhes do hambúrguer e quantidade
+            acc[id].hamburgueres.push({
+                nome: columns[3].innerText,
+                quantidade: columns[4].innerText,
+            });
+
+            return acc;
+        }, {});
+
+        // Limpa a tabela original
+        tableBody.innerHTML = "";
+
+        // Renderiza os dados agrupados
+        Object.values(groupedData).forEach((data, index) => {
+            // Linha do cabeçalho do pedido
+            const pedidoRow = document.createElement("tr");
+            pedidoRow.classList.add("pedido-group");
+            
+            // Adiciona uma linha separadora mais grossa apenas entre grupos
+            if (index > 0) {
+                pedidoRow.style.borderTop = "4px solid #333";
+            }
+
+            pedidoRow.innerHTML = `
+                <td>${data.cliente}</td>
+                <td>${data.telefone}</td>
+                <td>${data.endereco}</td>
+                <td colspan="2"></td>
+                <td>${data.data}</td>
+                <td>${data.status}</td>
+                <td>${data.id}</td>
+            `;
+            tableBody.appendChild(pedidoRow);
+
+            // Linhas dos hambúrgueres dentro do pedido
+            data.hamburgueres.forEach((hamburguer) => {
+                const itemRow = document.createElement("tr");
+                itemRow.innerHTML = `
+                    <td colspan="3"></td>
+                    <td>${hamburguer.nome}</td>
+                    <td>${hamburguer.quantidade}</td>
+                    <td colspan="3"></td>
+                `;
+                tableBody.appendChild(itemRow);
+            });
+        });
+    </script>
+</body>
+</html>

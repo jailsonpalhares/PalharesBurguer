@@ -1,0 +1,103 @@
+body{
+    background-color: #f2f2f2;
+}
+
+/* Estilo para o título da tabela */
+.table-container {
+    margin: 20px auto;
+    max-width: 90%; /* Ajusta a largura conforme necessário */
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.table-container h2 {
+    font-size: 24px;
+    color: #ff8900; /* Cor principal */
+    margin-bottom: 10px; /* Espaçamento entre o título e a tabela */
+    border-bottom: 2px solid #ff8900; /* Linha decorativa abaixo do título */
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* Estilo básico para a tabela */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Remove espaçamento entre células */
+    font-size: 16px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona sombra */
+    border-radius: 8px; /* Bordas arredondadas */
+    overflow: hidden; /* Remove bordas excedentes */
+}
+
+/* Estilo para as bordas */
+table, th, td {
+    border: none; /* Sem bordas visíveis */
+}
+
+/* Estilo para o cabeçalho */
+th {
+    background-color: #ff8900; /* Cor de fundo do cabeçalho */
+    color: white; /* Cor do texto */
+    padding: 15px; /* Espaçamento interno */
+    text-transform: uppercase; /* Texto em maiúsculas */
+    letter-spacing: 1px; /* Espaçamento entre letras */
+}
+
+/* Estilo para as células de dados */
+td {
+    padding: 12px; /* Espaçamento interno */
+    color: #333; /* Cor do texto */
+    border-bottom: 1px solid #ddd; /* Linha divisória discreta */
+}
+
+/* Listras para as linhas alternadas */
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Cor de fundo para linhas pares */
+}
+
+/* Realce ao passar o mouse */
+tr:hover {
+    background-color: #d87300; /* Cor de fundo ao passar o mouse */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Efeito suave */
+}
+
+/* Estilo especial para células de status */
+td.status {
+    text-align: center;
+    font-weight: bold;
+    color: #4CAF50; /* Cor destacada para o status */
+}
+
+/* Ajusta a largura das colunas */
+table td:first-child {
+    width: 20%; /* Ajuste a proporção conforme necessário */
+}
+
+h1{
+    text-align: center;
+}
+
+.action-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: inline-block;
+    padding: 12px 24px;
+    margin: 20 40px;
+    background-color: #ff8900;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.action-button:hover {
+    background-color: #d87300;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}

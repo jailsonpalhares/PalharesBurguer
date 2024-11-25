@@ -199,6 +199,74 @@ def adm_EditBurguer(burguer_id):
         # Se o burguer com o ID fornecido não for encontrado, redirecione para outra página ou manipule conforme necessário
         return "Hambúrguer não encontrado"
 
+def get_pedidos():
+    # Conexão com o banco de dados (SQLite como exemplo)
+    conn = sqlite3.connect('app.db')  # Substitua 'banco.db' pelo seu banco de dados
+    cursor = conn.cursor()
+    
+    # Consulta SQL para buscar dados
+    cursor.execute("SELECT id, usuario_id, data_pedido, status FROM pedidos")  # Ajuste conforme sua tabela
+    pedidos = cursor.fetchall()
+    
+    conn.close()
+    return pedidos
+
+@app.route('/adm_Customer')
+def adm_Customer():
+    # Obtenha os pedidos
+    usuarios = get_usuarios()
+    
+    # Renderize o template com os dados
+    return render_template('adm_Customer.html', usuarios=usuarios)
+
+def get_usuarios():
+    # Conexão com o banco de dados (SQLite como exemplo)
+    conn = sqlite3.connect('app.db')  # Substitua 'banco.db' pelo seu banco de dados
+    cursor = conn.cursor()
+    
+    # Consulta SQL para buscar dados
+    cursor.execute("SELECT id, nome, email, telefone, is_admin, endereco FROM usuarios")  # Ajuste conforme sua tabela
+    usuarios = cursor.fetchall()
+    
+    conn.close()
+    return usuarios
+
+@app.route('/adm_Orders')
+def adm_Orders():
+    # Obtenha os pedidos
+    relatorios = get_relatorioPedidos()
+    
+    # Renderize o template com os dados
+    return render_template('adm_Orders.html', relatorios=relatorios)
+
+def get_relatorioPedidos():
+    # Conexão com o banco de dados (SQLite como exemplo)
+    conn = sqlite3.connect('app.db')  # Substitua 'banco.db' pelo seu banco de dados
+    cursor = conn.cursor()
+    
+    # Consulta SQL para buscar dados
+    cursor.execute("""SELECT 
+    u.nome AS Cliente,
+    u.telefone,
+    u.endereco,
+    b.nome AS Hamburguer,
+    ip.quantidade,
+    p.data_pedido AS DataPedido,
+    p.status AS StatusPedido,
+    p.id AS PedidoID
+FROM 
+    itens_pedido ip
+INNER JOIN 
+    pedidos p ON ip.pedido_id = p.id
+INNER JOIN 
+    burguers b ON ip.burguer_id = b.id
+INNER JOIN 
+    usuarios u ON p.usuario_id = u.id;""")
+    relatorios = cursor.fetchall()
+    
+    conn.close()
+    return relatorios
+
 # Rota para o dashboard (requer login)
 @app.route('/dashboard')
 def dashboard():
@@ -332,7 +400,7 @@ def obter_burguer(burguer_id):
                 'id': burguer_data[0],
                 'nome': burguer_data[1],
                 'descricao': burguer_data[2],
-                'preco': float(burguer_data[3].replace(',', '.')),  # Substituir ',' por '.'
+                'preco': float(burguer_data[3].replace(',', '.')),
                 'disponivel': bool(burguer_data[4]),
                 'imagem_url': burguer_data[5]
             }
@@ -496,7 +564,7 @@ def edit_Perfil():
     return redirect(url_for('login'))
 
 
-@app.route('/admin/addBurguer', methods=['GET', 'POST'])
+@app.route('/adm_AddBurguer', methods=['GET', 'POST'])
 def adm_AddBurguer():
     if request.method == 'POST':
         nome = request.form['nome']
@@ -532,7 +600,7 @@ def finalizar_pedido():
         carrinho = session['carrinho']
         usuario_id = session.get('usuario_id')
         # Formatando a data e hora para exibir apenas hora e minutos
-        data_pedido = data_e_hora_brasil.strftime('%H:%M')
+        data_pedido = data_e_hora_brasil.strftime('%Y-%m-%d %H:%M')
 
         conn = connect_db()
         cursor = conn.cursor()

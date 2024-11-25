@@ -24,14 +24,14 @@
             {% endif %}
         {% endwith %}
         <form method="POST" action="/edit_Perfil">
-            <label for="nome">Nome Completo:</label>
-            <input type="text" id="nome" name="nome" class="form-field" required value="{{ usuario[m] }}">
+            <label for="nome">Nome Completoa:</label>
+            <input type="text" id="nome" name="nome" class="form-field" required value="{{ usuario[1] }}">
 
             <label for="endereco">Endereço:</label>
-            <input type="text" id="endereco" name="endereco" class="form-field" required>
+            <input type="text" id="endereco" name="endereco" class="form-field" required value="{{ usuario[2] }}">
 
             <label for="telefone">Telefone:</label>
-            <input type="telefone" id="telefone" name="telefone" class="form-field" required>
+            <input type="telefone" id="telefone" name="telefone" class="form-field" required value="{{ usuario[4] }}">
 
             <label for="senha">Senha:</label>
             <input type="password" id="senha" name="senha" class="form-field" required>
@@ -40,8 +40,12 @@
             <input type="password" id="confirma_senha" name="confirma_senha" class="form-field" required>
 
             <button type="submit" class="register-button">Salvar Alterações</button>
-
-            <a href="/dashboard" class="action-button">Voltar</a>
+            
+            {% if usuario[5] == 1 %}
+                <a href="/adm_Dashboard" class="action-button">Voltar</a>
+            {% else %}
+                <a href="/dashboard" class="action-button">Voltar</a>
+            {% endif %}
         </form>
 
 
